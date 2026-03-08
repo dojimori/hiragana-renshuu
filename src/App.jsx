@@ -10,12 +10,30 @@ function App() {
     },
     {
       id: 2,
-      hiragana: "あ",
+      hiragana: "い",
       answer: "i",
     },
   ];
 
   const [flipped, setFlipped] = useState(false);
+  const [flashcardIndex, setflashcardIndex] = useState(0);
+
+  const nextFlashcard = () => {
+    let nextIndex = flashcardIndex + 1;
+
+    if (nextIndex >= flashcards.length) return;
+
+    setflashcardIndex(nextIndex);
+  };
+
+  const prevFlashcard = () => {
+    let prevIndex = flashcardIndex - 1;
+
+    if (prevIndex < 0) return;
+
+    setflashcardIndex(prevIndex);
+  };
+
   return (
     <>
       <main className=" h-[100vh] flex justify-center p-6">
@@ -39,9 +57,11 @@ function App() {
             >
               <p className="text-6xl text-center hover:scale-110 transition-all duration-150">
                 {flipped ? (
-                  flashcards[0].answer
+                  flashcards[flashcardIndex].answer
                 ) : (
-                  <span className="font-bolder">{flashcards[0].hiragana}</span>
+                  <span className="font-bolder">
+                    {flashcards[flashcardIndex].hiragana}
+                  </span>
                 )}
               </p>
 
@@ -54,10 +74,16 @@ function App() {
             </div>
             {/* buttons */}
             <div className="flex gap-4 mt-2">
-              <button className="cursor-pointer bg-green-600 text-center text-slate-100 px-2 text-sm rounded-sm">
+              <button
+                onClick={prevFlashcard}
+                className="cursor-pointer bg-green-600 text-center text-slate-100 px-2 text-sm rounded-sm"
+              >
                 prev
               </button>
-              <button className="cursor-pointer bg-blue-400 text-center text-slate-100 px-2 text-sm rounded-sm">
+              <button
+                onClick={nextFlashcard}
+                className="cursor-pointer bg-blue-400 text-center text-slate-100 px-2 text-sm rounded-sm"
+              >
                 next
               </button>
             </div>
