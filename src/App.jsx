@@ -120,13 +120,16 @@ function App() {
                 onClick={unknown}
                 className="cursor-pointer  bg-[#457B9D]/80 hover:bg-[#457B9D] text-center  text-white px-2 text-sm w-[200px] h-[77px]"
               >
-                I don't know
+                I don't know{" "}
+                <span className="font-bold text-xs">({unknowns?.length}) </span>
               </button>
+
               <button
                 onClick={known}
                 className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px]"
               >
                 I know
+                <span className="font-bold text-xs"> ({knowns?.length}) </span>
               </button>
             </div>
           </div>
