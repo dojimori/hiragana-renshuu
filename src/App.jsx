@@ -105,6 +105,9 @@ function App() {
                 flip
               </button>
             </div>
+            <small className="mt-2 font-bold">
+              {currentFlashcardIndex}/{shuffledFlashCards.length}
+            </small>
             {/* buttons */}
             <div className="flex gap-4 mt-8">
               <button
