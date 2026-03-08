@@ -4,37 +4,42 @@ import { hiragana } from "./data/hiragana";
 function App() {
   const [flipped, setFlipped] = useState(false);
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0);
-  const [shuffledFlashCards, setShuffledFlashCards] = useState();
+  const [shuffledFlashCards, setShuffledFlashCards] = useState([]);
+  const [knowns, setKnowns] = useState([]);
+  const [unknowns, setUnknowns] = useState([]);
 
-  const iKnow = () => {
+  const known = () => {
+    const knownCharacter = shuffledFlashCards[currentFlashcardIndex];
+    setKnowns((prev) => {
+      const updated = [...prev, knownCharacter];
+      console.log(updated);
+
+      return updated;
+    });
     next();
-    /* 
-      TODO: the currenet character will be stored in a 'know' storage
-      so that the user can track the characters they already memorized/know
-    */
   };
 
   useEffect(() => {
-    // console.log("ww");
-    shuffleFlashCards();
+    shuffleFlashCards(hiragana);
   }, []);
 
-  const iDontKnow = () => {
+  const unknown = () => {
+    const unknownCharacter = shuffledFlashCards[currentFlashcardIndex];
+    setUnknowns((prev) => {
+      const updated = [...prev, unknownCharacter];
+      console.log(updated);
+
+      return updated;
+    });
     next();
-    /* 
-      TODO: the current character will be stored in a 'i dont know' storage
-      so that the user can track the characters they don't know.
-   
-      we'll call the nextFlashcard function right after.
-      */
   };
 
   // function generateRandomIndex() {
   //   return Math.floor(Math.random() * hiragana.length);
   // }
 
-  function shuffleFlashCards() {
-    const shuffled = shuffle(hiragana);
+  function shuffleFlashCards(array) {
+    const shuffled = shuffle([...array]);
     setShuffledFlashCards(shuffled);
   }
 
@@ -55,7 +60,7 @@ function App() {
   }
 
   function next() {
-    if (currentFlashcardIndex + 1 == hiragana.length) return;
+    if (currentFlashcardIndex + 1 == shuffledFlashCards.length) return;
     let nextIndex = currentFlashcardIndex + 1;
     setCurrentFlashcardIndex(nextIndex);
     setFlipped(false);
@@ -93,7 +98,7 @@ function App() {
                 ) : (
                   <span className="font-bolder">
                     {shuffledFlashCards &&
-                      shuffledFlashCards[currentFlashcardIndex].hiragana}
+                      shuffledFlashCards[currentFlashcardIndex]?.hiragana}
                   </span>
                 )}
               </p>
@@ -112,13 +117,13 @@ function App() {
             {/* buttons */}
             <div className="flex gap-4 mt-8">
               <button
-                onClick={iDontKnow}
+                onClick={unknown}
                 className="cursor-pointer  bg-[#457B9D]/80 hover:bg-[#457B9D] text-center  text-white px-2 text-sm w-[200px] h-[77px]"
               >
                 I don't know
               </button>
               <button
-                onClick={iKnow}
+                onClick={known}
                 className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px]"
               >
                 I know
