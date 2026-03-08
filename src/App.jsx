@@ -11,17 +11,22 @@ function App() {
 
     const randomIndex = generateRandomIndex();
 
+    /* 
+      TODO: the currenet character will be stored in a 'know' storage
+      so that the user can track the characters they already memorized/know
+    */
+
     setflashcardIndex(randomIndex);
     setFlipped(false);
   };
 
-  const prevFlashcard = () => {
-    let prevIndex = flashcardIndex - 1;
-
-    if (prevIndex < 0) return;
-
-    setflashcardIndex(prevIndex);
-    setFlipped(false);
+  const iDontKnow = () => {
+    /* 
+      TODO: the current character will be stored in a 'i dont know' storage
+      so that the user can track the characters they don't know.
+   
+      we'll call the nextFlashcard function right after.
+      */
   };
 
   function generateRandomIndex() {
@@ -73,16 +78,16 @@ function App() {
             {/* buttons */}
             <div className="flex gap-4 mt-8">
               <button
-                onClick={prevFlashcard}
-                className="cursor-pointer bg-[#A3D55D]/80 hover:bg-[#A3D55D] text-center  text-white px-2 text-sm w-[200px] h-[77px]"
+                onClick={iDontKnow}
+                className="cursor-pointer  bg-[#457B9D]/80 hover:bg-[#457B9D] text-center  text-white px-2 text-sm w-[200px] h-[77px]"
               >
-                previous card
+                I don't know
               </button>
               <button
                 onClick={nextFlashcard}
-                className="cursor-pointer bg-[#457B9D]/80 hover:bg-[#457B9D] text-center text-white px-2 text-sm  w-[200px]"
+                className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px]"
               >
-                next card
+                I know
               </button>
             </div>
           </div>
