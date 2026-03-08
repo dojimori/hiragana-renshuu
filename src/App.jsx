@@ -6,11 +6,12 @@ function App() {
   const [flashcardIndex, setflashcardIndex] = useState(0);
 
   const nextFlashcard = () => {
-    let nextIndex = flashcardIndex + 1;
+    // let nextIndex = flashcardIndex + 1;
+    // if (nextIndex >= hiragana.length) return;
 
-    if (nextIndex >= hiragana.length) return;
+    const randomIndex = generateRandomIndex();
 
-    setflashcardIndex(nextIndex);
+    setflashcardIndex(randomIndex);
     setFlipped(false);
   };
 
@@ -22,6 +23,10 @@ function App() {
     setflashcardIndex(prevIndex);
     setFlipped(false);
   };
+
+  function generateRandomIndex() {
+    return Math.floor(Math.random() * hiragana.length);
+  }
 
   return (
     <>
