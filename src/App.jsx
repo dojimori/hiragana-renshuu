@@ -7,14 +7,11 @@ function App() {
   const [shuffledFlashCards, setShuffledFlashCards] = useState();
 
   const iKnow = () => {
-    let nextIndex = flashcardIndex + 1;
-    if (nextIndex >= hiragana.length) return;
-    // const randomIndex = generateRandomIndex();
+    next();
     /* 
       TODO: the currenet character will be stored in a 'know' storage
       so that the user can track the characters they already memorized/know
     */
-    setflashcardIndex(nextIndex);
     setFlipped(false);
   };
 
@@ -24,6 +21,7 @@ function App() {
   }, []);
 
   const iDontKnow = () => {
+    next();
     /* 
       TODO: the current character will be stored in a 'i dont know' storage
       so that the user can track the characters they don't know.
@@ -55,6 +53,12 @@ function App() {
     }
 
     return array;
+  }
+
+  function next() {
+    let nextIndex = flashcardIndex + 1;
+    if (nextIndex >= hiragana.length) return;
+    setflashcardIndex(nextIndex);
   }
 
   return (
