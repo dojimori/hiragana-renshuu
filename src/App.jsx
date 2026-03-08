@@ -3,7 +3,7 @@ import "./App.css";
 import { hiragana } from "./data/hiragana";
 function App() {
   const [flipped, setFlipped] = useState(false);
-  const [flashcardIndex, setflashcardIndex] = useState(0);
+  const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0);
   const [shuffledFlashCards, setShuffledFlashCards] = useState();
 
   const iKnow = () => {
@@ -56,9 +56,9 @@ function App() {
   }
 
   function next() {
-    let nextIndex = flashcardIndex + 1;
+    let nextIndex = currentFlashcardIndex + 1;
     if (nextIndex >= hiragana.length) return;
-    setflashcardIndex(nextIndex);
+    setCurrentFlashcardIndex(nextIndex);
   }
 
   return (
@@ -89,11 +89,11 @@ function App() {
               <p className="text-9xl text-center hover:scale-110 transition-all duration-150">
                 {flipped ? (
                   shuffledFlashCards &&
-                  shuffledFlashCards[flashcardIndex].answer
+                  shuffledFlashCards[currentFlashcardIndex].answer
                 ) : (
                   <span className="font-bolder">
                     {shuffledFlashCards &&
-                      shuffledFlashCards[flashcardIndex].hiragana}
+                      shuffledFlashCards[currentFlashcardIndex].hiragana}
                   </span>
                 )}
               </p>
