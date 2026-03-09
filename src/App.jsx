@@ -10,6 +10,8 @@ function App() {
   const [knownsLength, setKnownsLength] = useState(0);
 
   const storePastCharacter = (char, isKnown) => {
+    if (currentFlashcardIndex + 1 == shuffledFlashCards.length) return;
+
     if (isKnown) setKnownsLength(knownsLength + 1);
     else setUnknowsLength(unknownsLength + 1);
 
@@ -105,10 +107,10 @@ function App() {
           {/* exercises links */}
 
           <div className="mb-6 flex gap-2 items-center">
-            <button className="bg-[#4CAF50] text-white px-4 py-1 rounded-xs">
+            <button className="text-sm cursor-pointer bg-[#4CAF50] text-white px-4 py-1 rounded-xs">
               Flashcards
             </button>
-            <button className="bg-[#4CAF50] text-white px-4 py-1 rounded-xs">
+            <button className="text-sm cursor-pointer bg-[#4CAF50] text-white px-4 py-1 rounded-xs">
               Reading Practice
             </button>
           </div>
