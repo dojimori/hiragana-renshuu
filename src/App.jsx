@@ -5,12 +5,14 @@ function App() {
   const [flipped, setFlipped] = useState(false);
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0);
   const [shuffledFlashCards, setShuffledFlashCards] = useState([]);
-  const [knowns, setKnowns] = useState([]);
-  const [unknowns, setUnknowns] = useState([]);
   const [pastCharacters, setPastCharacters] = useState([]);
+  const [unknownsLength, setUnknowsLength] = useState(0);
+  const [knownsLength, setKnownsLength] = useState(0);
 
-  // TODO: remove the knowns/unknowns state (not needed)
   const storePastCharacter = (char, isKnown) => {
+    if (isKnown) setKnownsLength(knownsLength + 1);
+    else setUnknowsLength(unknownsLength + 1);
+
     setPastCharacters((prev) => {
       const updated = [
         ...prev,
@@ -26,48 +28,33 @@ function App() {
   };
 
   const known = () => {
-    // TODO: refactor laterrr
-    const knownCharacter = shuffledFlashCards[currentFlashcardIndex];
+    const character = shuffledFlashCards[currentFlashcardIndex];
 
-    setKnowns((prev) => {
-      const updated = [...prev, knownCharacter];
-      console.log(updated);
-
-      return updated;
-    });
-
-    storePastCharacter(knownCharacter, true);
+    // store the character at `pastCharacters`
+    // state and include a true value which
+    // means the user knows this hiragana
+    storePastCharacter(character, true);
     next();
   };
-
-  useEffect(() => {
-    shuffleFlashCards(hiragana);
-  }, []);
 
   const unknown = () => {
-    // TODO: refactor laterrr
+    const character = shuffledFlashCards[currentFlashcardIndex];
 
-    const unknownCharacter = shuffledFlashCards[currentFlashcardIndex];
-
-    setUnknowns((prev) => {
-      const updated = [...prev, unknownCharacter];
-      console.log(updated);
-
-      return updated;
-    });
-
-    storePastCharacter(unknownCharacter, false);
+    // store the character at `pastCharacters`
+    // state and include a false value which
+    // means the user does not knows this hiragana
+    storePastCharacter(character, false);
     next();
   };
-
-  // function generateRandomIndex() {
-  //   return Math.floor(Math.random() * hiragana.length);
-  // }
 
   function shuffleFlashCards(array) {
     const shuffled = shuffle([...array]);
     setShuffledFlashCards(shuffled);
   }
+
+  useEffect(() => {
+    shuffleFlashCards(hiragana);
+  }, []);
 
   function shuffle(array) {
     let currentIndex = array.length;
@@ -149,7 +136,8 @@ function App() {
                 >
                   I don't know{" "}
                   <span className="font-bold text-xs">
-                    ({unknowns?.length}){" "}
+                    {" "}
+                    ({unknownsLength}){" "}
                   </span>
                 </button>
                 <small>わかりません</small>
@@ -160,10 +148,7 @@ function App() {
                   className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
                 >
                   I know
-                  <span className="font-bold text-xs">
-                    {" "}
-                    ({knowns?.length}){" "}
-                  </span>
+                  <span className="font-bold text-xs"> ({knownsLength}) </span>
                 </button>
                 <small>わかります</small>
               </div>
