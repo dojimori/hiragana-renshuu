@@ -228,7 +228,9 @@ function App() {
                         {answer}
                       </td>
                       <td className="border border-gray-300 text-center">
-                        {isKnown ? "✔️" : "❌"}
+                        <span className="font-extralight text-sm">
+                          {isKnown ? "せいかい (✔️)" : "まちがい (❌)"}
+                        </span>
                       </td>
                     </tr>
                   );
