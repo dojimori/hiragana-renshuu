@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { hiragana } from "./data/hiragana";
 function App() {
@@ -8,6 +8,16 @@ function App() {
   const [pastCharacters, setPastCharacters] = useState([]);
   const [unknownsLength, setUnknowsLength] = useState(0);
   const [knownsLength, setKnownsLength] = useState(0);
+  const tableContainer = useRef(null);
+
+  useEffect(() => {
+    if (tableContainer.current) {
+      tableContainer.current.scrollTo({
+        top: tableContainer.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [pastCharacters]);
 
   const storePastCharacter = (char, isKnown) => {
     // 70                             70
@@ -192,7 +202,10 @@ function App() {
           <span className="text-sm font-extralight mb-2">
             Results (けっか )
           </span>
-          <div className=" border border-slate-200 rounded-sm p-2 w-full flex justify-center items-start  h-[368px] overflow-y-scroll">
+          <div
+            ref={tableContainer}
+            className=" border border-slate-200 rounded-sm p-2 w-full flex justify-center items-start  h-[368px] overflow-y-scroll"
+          >
             <table className="w-full ">
               <tbody className="border border-gray-200">
                 <tr className="p-2 bg-green-100 ">
