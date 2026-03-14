@@ -92,9 +92,9 @@ function ReadingPractice() {
     },
   ];
 
-  // useEffect(() => {
-  //   console.log(answers);
-  // }, [answers]);
+  useEffect(() => {
+    console.log("answer", answers);
+  }, [answers]);
 
   useEffect(() => {
     if (timer == 0) return;
@@ -122,6 +122,8 @@ function ReadingPractice() {
     } else {
       alert("Machigai desuu");
     }
+    setAnswers([]);
+    setCurrentIndex((prev) => prev + 1);
   };
 
   function shuffle(array) {
@@ -168,7 +170,7 @@ function ReadingPractice() {
             .split("")
             .map((_, index) => (
               <input
-                key={index}
+                key={`${currentIndex}-${index}`}
                 type="text"
                 maxLength={3}
                 value={answers[index]}
