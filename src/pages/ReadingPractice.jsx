@@ -153,7 +153,7 @@ function ReadingPractice() {
     if (firstInput) {
       firstInput.focus();
     }
-  }, [currentIndex]);
+  }, [currentIndex, start]);
 
   return (
     <>
