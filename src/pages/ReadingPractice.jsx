@@ -10,6 +10,7 @@ function ReadingPractice() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledSentences, setShuffledSentences] = useState([]);
   const [start, setStart] = useState(false);
+  const [isTimesUp, setIsTimesUp] = useState(false);
   const sentences = [
     {
       hiragana: "わたしはねこです",
@@ -98,7 +99,15 @@ function ReadingPractice() {
   // }, [answers]);
 
   useEffect(() => {
-    if (!start || timer == 0) return;
+    if (timer == 0) {
+      setIsTimesUp(true);
+    }
+  }, [timer]);
+
+  useEffect(() => {
+    if (!start || isTimesUp) {
+      return;
+    }
     const interval = setInterval(() => {
       setTimer((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
@@ -161,8 +170,28 @@ function ReadingPractice() {
         <Header></Header>
         {start ? (
           <>
+            {isTimesUp && (
+              <>
+                <div className="mb-4  flex gap-4 justify-between border border-slate-50 p-2 w-full">
+                  <div className="flex gap-4">
+                    <h4 className="font-bold">Times Up!</h4>
+                    <p className="font-extralight">Score: 12</p>
+                    <p className="font-extralight">Highest: 40</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <span className=" bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-white px-4 text-sm py-1 cursor-pointer ">
+                      Review
+                    </span>
+                    <span className="bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-white px-4 text-sm py-1 cursor-pointer">
+                      Restart
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
+
             <div className="mb-12">
-              <span className="text-lg ">{timer}</span>
+              <span className="text-lg ">Timer: {timer}s</span>
               {/* <span>00:30</span> */}
             </div>
 
@@ -175,20 +204,21 @@ function ReadingPractice() {
             </div>
             <small className="mt-2">Write the romaji</small>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-1 w-full">
-              {shuffledSentences[currentIndex]?.hiragana
-                .split("")
-                .map((_, index) => (
+              {shuffledSentences[currentIndex]?.answer
+                .split(" ")
+                .map((answer, index) => (
                   <input
                     key={`${currentIndex}-${index}`}
                     type="text"
+                    disabled={isTimesUp}
                     maxLength={3}
-                    value={answers[index]}
+                    value={isTimesUp ? answer : answers[index]}
                     onChange={(e) => {
                       const newAnswers = [...answers];
                       newAnswers[index] = e.target.value;
                       setAnswers(newAnswers);
                     }}
-                    className="px-2 w-[50px] border border-gray-400  outline-amber-400 "
+                    className={`px-2 w-[50px] border border-gray-400 outline-amber-400 ${isTimesUp ? "bg-gray-200 text-gray-500 opacity-60" : ""}`}
                   />
                 ))}
             </div>
@@ -196,14 +226,16 @@ function ReadingPractice() {
             <div className="mt-6 w-full flex justify-center gap-4">
               <button
                 onClick={(e) => setReveal(!reveal)}
-                className=" cursor-pointer bg-red-500/80 hover:bg-red-600  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
+                disabled={isTimesUp}
+                className={` cursor-pointer bg-red-500/80 hover:bg-red-600  text-center text-white px-2 text-sm  w-[200px] h-[77px] ${isTimesUp ? "opacity-50 cursor-not-allowed hover:bg-red-500/80" : ""}`}
               >
                 Reveal
               </button>
 
               <button
                 onClick={checkAnswer}
-                className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
+                disabled={isTimesUp}
+                className={` cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px] ${isTimesUp ? "opacity-50 cursor-not-allowed hover:bg-[#4CAF50]/80" : ""}`}
               >
                 Attempt
               </button>
