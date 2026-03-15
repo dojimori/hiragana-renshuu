@@ -4,7 +4,8 @@ import Page from "../components/common/Page";
 import { useFetcher } from "react-router-dom";
 
 function ReadingPractice() {
-  const [timer, setTimer] = useState(30);
+  const INITIAL_TIMER = 30;
+  const [timer, setTimer] = useState(INITIAL_TIMER);
   const [answers, setAnswers] = useState([]);
   const [reveal, setReveal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -98,9 +99,11 @@ function ReadingPractice() {
   //   console.log("answer", answers);
   // }, [answers]);
 
+  // handle time's up
   useEffect(() => {
     if (timer == 0) {
       setIsTimesUp(true);
+      setReveal(true);
     }
   }, [timer]);
 
@@ -153,7 +156,7 @@ function ReadingPractice() {
   }
 
   useEffect(() => {
-    const shuffled = shuffle(sentences);
+    const shuffled = shuffle([...sentences]);
     setShuffledSentences(shuffled);
   }, []);
 
@@ -163,6 +166,16 @@ function ReadingPractice() {
       firstInput.focus();
     }
   }, [currentIndex, start]);
+
+  function restart() {
+    setAnswers([]);
+    setIsTimesUp(false);
+    setTimer(INITIAL_TIMER);
+    setReveal(false);
+    const shuffled = shuffle([...sentences]);
+    setShuffledSentences(shuffled);
+    setCurrentIndex(0);
+  }
 
   return (
     <>
@@ -182,7 +195,10 @@ function ReadingPractice() {
                     <span className=" bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-white px-4 text-sm py-1 cursor-pointer ">
                       Review
                     </span>
-                    <span className="bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-white px-4 text-sm py-1 cursor-pointer">
+                    <span
+                      onClick={restart}
+                      className="bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-white px-4 text-sm py-1 cursor-pointer"
+                    >
                       Restart
                     </span>
                   </div>
@@ -212,7 +228,7 @@ function ReadingPractice() {
                     type="text"
                     disabled={isTimesUp}
                     maxLength={3}
-                    value={isTimesUp ? answer : answers[index]}
+                    value={reveal ? answer : (answers[index] ?? "")}
                     onChange={(e) => {
                       const newAnswers = [...answers];
                       newAnswers[index] = e.target.value;
