@@ -37,7 +37,7 @@ function Header() {
           <small
             className={`font-light ${path == "/reading" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
-            <Link to="/reading">Reading Practice</Link>
+            <Link to="/reading">Hiragana: Read & Type</Link>
           </small>
         </div>
       </div>

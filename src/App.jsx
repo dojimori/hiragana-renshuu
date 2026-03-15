@@ -24,7 +24,6 @@ function App() {
   }, [pastCharacters]);
 
   const storePastCharacter = (char, isKnown) => {
-    // 70                             70
     if (currentFlashcardIndex >= shuffledFlashCards.length) {
       console.log("finished", currentFlashcardIndex, shuffledFlashCards.length);
       return;

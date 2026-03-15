@@ -9,6 +9,7 @@ function ReadingPractice() {
   const [reveal, setReveal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledSentences, setShuffledSentences] = useState([]);
+  const [start, setStart] = useState(false);
   const sentences = [
     {
       hiragana: "わたしはねこです",
@@ -87,23 +88,23 @@ function ReadingPractice() {
     },
     {
       hiragana: "わたしはにほんごをべんきょうします",
-      answer: "wa ta shi wa ni ho n go o be n kyo u shi ma su",
+      answer: "wa ta shi wa ni ho n go o be n ki yo u shi ma su",
       romaji: "watashi wa nihongo o benkyou shimasu.",
     },
   ];
 
-  useEffect(() => {
-    console.log("answer", answers);
-  }, [answers]);
+  // useEffect(() => {
+  //   console.log("answer", answers);
+  // }, [answers]);
 
   useEffect(() => {
-    if (timer == 0) return;
+    if (!start || timer == 0) return;
     const interval = setInterval(() => {
       setTimer((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [start]);
 
   const checkAnswer = () => {
     const filterWhiteSpaces = answers.map((str) => {
@@ -158,54 +159,78 @@ function ReadingPractice() {
     <>
       <Page>
         <Header></Header>
+        {start ? (
+          <>
+            <div className="mb-12">
+              <span className="text-lg ">{timer}</span>
+              {/* <span>00:30</span> */}
+            </div>
 
-        <div className="mb-12">
-          <span className="text-lg ">{timer}</span>
-          {/* <span>00:30</span> */}
-        </div>
+            <div className="p-2 border border-amber-200  w-full text-center">
+              <h1 className="font-bold text-6xl">
+                {reveal
+                  ? shuffledSentences[currentIndex]?.romaji
+                  : shuffledSentences[currentIndex]?.hiragana}
+              </h1>
+            </div>
+            <small className="mt-2">Write the romaji</small>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-1 w-full">
+              {shuffledSentences[currentIndex]?.hiragana
+                .split("")
+                .map((_, index) => (
+                  <input
+                    key={`${currentIndex}-${index}`}
+                    type="text"
+                    maxLength={3}
+                    value={answers[index]}
+                    onChange={(e) => {
+                      const newAnswers = [...answers];
+                      newAnswers[index] = e.target.value;
+                      setAnswers(newAnswers);
+                    }}
+                    className="px-2 w-[50px] border border-gray-400  outline-amber-400 "
+                  />
+                ))}
+            </div>
 
-        <div className="p-2 border border-amber-200  w-full text-center">
-          <h1 className="font-bold text-6xl">
-            {reveal
-              ? shuffledSentences[currentIndex]?.romaji
-              : shuffledSentences[currentIndex]?.hiragana}
-          </h1>
-        </div>
-        <small className="mt-2">Input Romaji here</small>
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-1 w-full">
-          {shuffledSentences[currentIndex]?.hiragana
-            .split("")
-            .map((_, index) => (
-              <input
-                key={`${currentIndex}-${index}`}
-                type="text"
-                maxLength={3}
-                value={answers[index]}
-                onChange={(e) => {
-                  const newAnswers = [...answers];
-                  newAnswers[index] = e.target.value;
-                  setAnswers(newAnswers);
-                }}
-                className="px-2 w-[50px] border border-gray-400  outline-amber-400 "
-              />
-            ))}
-        </div>
+            <div className="mt-6 w-full flex justify-center gap-4">
+              <button
+                onClick={(e) => setReveal(!reveal)}
+                className=" cursor-pointer bg-red-500/80 hover:bg-red-600  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
+              >
+                Reveal
+              </button>
 
-        <div className="mt-6 w-full flex justify-center gap-4">
-          <button
-            onClick={(e) => setReveal(!reveal)}
-            className=" cursor-pointer bg-red-500/80 hover:bg-red-600  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
-          >
-            Reveal
-          </button>
+              <button
+                onClick={checkAnswer}
+                className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
+              >
+                Attempt
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-full flex items-center justify-center flex-col gap-4">
+              <h1 className="font-bold text-4xl">Konnichiwa!</h1>
 
-          <button
-            onClick={checkAnswer}
-            className=" cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px]"
-          >
-            Attempt
-          </button>
-        </div>
+              <p className="text-gray-600 font-extralight text-center">
+                Here, you will be translating hiragana characters to romaji.
+                <span className="text-sm block text-slate-400">
+                  This practice will be timed for 30s by default, you can
+                  customize or disable the timer on the options above.
+                </span>
+              </p>
+
+              <button
+                onClick={(e) => setStart(!start)}
+                className="cursor-pointer bg-green-600/80 py-4 px-12 text-white shadow-sm font-bold"
+              >
+                Start!
+              </button>
+            </div>
+          </>
+        )}
       </Page>
     </>
   );
