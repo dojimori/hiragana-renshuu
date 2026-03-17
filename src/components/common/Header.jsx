@@ -10,7 +10,6 @@ function Header() {
 
   return (
     <>
-      {" "}
       <div className="mb-6 w-full px-4 py-2 border-b border-gray-200 flex justify-between  items-center gap-8">
         <div className="flex gap-2 items-center">
           <img width="90" src="/nihongo.png" alt="" />
