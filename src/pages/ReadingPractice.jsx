@@ -194,7 +194,7 @@ function ReadingPractice() {
           className={`${showResultModal ? "" : "hidden"} w-[600px] bg-slate-50/80 p-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center flex-col`}
         >
           <div className="flex flex-row gap-4 items-center">
-            <p className="text-blue-800 underline font-bold">
+            <p className="text-blue-800  font-bold">
               せかい <span className="font-extralight text-xs">(correct)</span>
             </p>
             <img width="200" src="/pose_peace_sign_woman.png" alt="" />
@@ -206,10 +206,7 @@ function ReadingPractice() {
             Next
           </button>
         </div>
-
-        {start ? (
-          <>
-            {/* {isTimesUp && (
+        {/* {isTimesUp && (
               <>
                 <div className="mb-4  flex gap-4 justify-between border border-slate-50 p-2 w-full">
                   <div className="flex gap-4">
@@ -232,82 +229,70 @@ function ReadingPractice() {
               </>
             )} */}
 
-            {/* <div className="mb-12">
+        {/* <div className="mb-12">
               <span className="text-lg ">Timer: {timer}s</span>
               <span>00:30</span>
             </div> */}
+        <div className="flex items-center gap-4 mb-4">
+          <img width="100" src="/pose_peace_sign_woman.png" alt="" />
 
-            <div className="p-2 border border-amber-200  w-full text-center">
-              <h1
-                className={`  ${reveal ? "font-ligh text-4xl" : "font-bold text-6xl "}`}
-              >
-                {reveal
-                  ? shuffledSentences[currentIndex]?.romaji
-                  : shuffledSentences[currentIndex]?.hiragana}
-              </h1>
-            </div>
-            <small className="mt-2">Write the romaji</small>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-1 w-full">
-              {shuffledSentences[currentIndex]?.answer
-                .split(" ")
-                .map((answer, index) => (
-                  <input
-                    key={`${currentIndex}-${index}`}
-                    type="text"
-                    disabled={false}
-                    maxLength={3}
-                    value={reveal ? answer : (answers[index] ?? "")}
-                    onChange={(e) => {
-                      const newAnswers = [...answers];
-                      newAnswers[index] = e.target.value;
-                      setAnswers(newAnswers);
-                    }}
-                    // className={`px-2 w-[50px] border border-gray-400 outline-amber-400 ${isTimesUp ? "bg-gray-200 text-gray-500 opacity-60" : ""}`}
-                    className={`px-2 w-[50px] border border-gray-400 outline-amber-400 ${false ? "bg-gray-200 text-gray-500 opacity-60" : ""}`}
-                  />
-                ))}
-            </div>
+          <p className="text-gray-600 font-extralight text-sm">
+            Here, you will be translating hiragana characters to romaji.
+            <span className="text-sm block text-slate-400">
+              This practice will be timed for 30s by default, you can customize
+              or disable the timer on the options above.
+            </span>
+          </p>
+        </div>
 
-            <div className="mt-6 w-full flex justify-center gap-4">
-              <button
-                onClick={(e) => setReveal(!reveal)}
+        <div className="p-2 border border-amber-200  w-full text-center">
+          <h1
+            className={`  ${reveal ? "font-ligh text-4xl" : "font-bold text-6xl "}`}
+          >
+            {reveal
+              ? shuffledSentences[currentIndex]?.romaji
+              : shuffledSentences[currentIndex]?.hiragana}
+          </h1>
+        </div>
+        <small className="mt-2">Write the romaji</small>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-1 w-full">
+          {shuffledSentences[currentIndex]?.answer
+            .split(" ")
+            .map((answer, index) => (
+              <input
+                key={`${currentIndex}-${index}`}
+                type="text"
                 disabled={false}
-                className={` cursor-pointer bg-red-500/80 hover:bg-red-600  text-center text-white px-2 text-sm  w-[200px] h-[77px]`}
-              >
-                Reveal
-              </button>
+                maxLength={3}
+                value={reveal ? answer : (answers[index] ?? "")}
+                onChange={(e) => {
+                  const newAnswers = [...answers];
+                  newAnswers[index] = e.target.value;
+                  setAnswers(newAnswers);
+                }}
+                // className={`px-2 w-[50px] border border-gray-400 outline-amber-400 ${isTimesUp ? "bg-gray-200 text-gray-500 opacity-60" : ""}`}
+                className={`px-2 w-[50px] border border-gray-400 outline-amber-400 ${false ? "bg-gray-200 text-gray-500 opacity-60" : ""}`}
+              />
+            ))}
+        </div>
 
-              <button
-                onClick={checkAnswer}
-                disabled={false}
-                className={` cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px]`}
-              >
-                Attempt
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="w-full flex items-center justify-center flex-col gap-4">
-              <h1 className="font-bold text-4xl">Konnichiwa!</h1>
+        <div className="mt-6 w-full flex justify-center gap-4">
+          <button
+            onClick={(e) => setReveal(!reveal)}
+            disabled={false}
+            className={` cursor-pointer bg-red-500/80 hover:bg-red-600  text-center text-white px-2 text-sm  w-[200px] h-[77px]`}
+          >
+            Reveal
+          </button>
 
-              <p className="text-gray-600 font-extralight text-center">
-                Here, you will be translating hiragana characters to romaji.
-                <span className="text-sm block text-slate-400">
-                  This practice will be timed for 30s by default, you can
-                  customize or disable the timer on the options above.
-                </span>
-              </p>
-
-              <button
-                onClick={(e) => setStart(!start)}
-                className="cursor-pointer bg-green-600/80 py-4 px-12 text-white shadow-sm font-bold"
-              >
-                Start!
-              </button>
-            </div>
-          </>
-        )}
+          <button
+            onClick={checkAnswer}
+            disabled={false}
+            className={` cursor-pointer bg-[#4CAF50]/80 hover:bg-[#4CAF50]  text-center text-white px-2 text-sm  w-[200px] h-[77px]`}
+          >
+            Attempt
+          </button>
+        </div>
       </Page>
     </>
   );
