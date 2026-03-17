@@ -136,7 +136,6 @@ function ReadingPractice() {
       setResultShowModal(true);
       setIsCorrect(true);
       setAnswers([]);
-      setCurrentIndex((prev) => prev + 1);
     } else {
       setResultShowModal(false);
       setIsCorrect(false);
@@ -181,6 +180,12 @@ function ReadingPractice() {
     setCurrentIndex(0);
   }
 
+  function next() {
+    setResultShowModal(false);
+    setIsCorrect(false);
+    setCurrentIndex((prev) => prev + 1);
+  }
+
   return (
     <>
       <Page>
@@ -194,8 +199,11 @@ function ReadingPractice() {
             </p>
             <img width="200" src="/pose_peace_sign_woman.png" alt="" />
           </div>
-          <button className="cursor-pointer  bg-[#4CAF50]/80 hover:bg-[#4CAF50] text-white font-light text-sm px-2 ">
-            Continue
+          <button
+            onClick={next}
+            className="cursor-pointer  bg-[#4CAF50]/80 hover:bg-[#4CAF50] text-white font-light text-sm px-2 "
+          >
+            Next
           </button>
         </div>
 
