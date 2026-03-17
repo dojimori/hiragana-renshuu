@@ -95,7 +95,7 @@ function App() {
               flex items-center justify-center rounded-sm p-2`}
           >
             {!isFinished ? (
-              <p className="text-7xl sm:text-9xl text-center hover:scale-110 transition-all duration-150">
+              <p className="text-9xl text-center hover:scale-110 transition-all duration-150">
                 {flipped ? (
                   shuffledFlashCards[currentFlashcardIndex]?.answer
                 ) : (
