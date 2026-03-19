@@ -155,13 +155,13 @@ function App() {
         </div>
 
         {/* Records table */}
-        <div className="mt-8 sm:mt-12 px-4 sm:px-0 w-full"></div>
-        <span className="text-xs font-bold mb-2 px-4 sm:px-0">
-          Results (けっか)
-        </span>
+        <div className="my-12  w-full border-t border-b px-4 py-1 border-gray-200">
+          <span className="text-xs font-bold">Results (けっか)</span>
+        </div>
+
         <div
           ref={tableContainer}
-          className=" w-full flex justify-center items-start h-[300px] sm:h-[368px] overflow-y-scroll mx-0"
+          className=" w-full flex justify-center items-start max-h-[300px] sm:max-h-[300px] overflow-y-scroll mx-0"
         >
           <table className="w-full">
             <tbody className="border border-gray-200">
