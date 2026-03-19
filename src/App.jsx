@@ -83,7 +83,6 @@ function App() {
         {/* header */}
         <Header />
         {/* end header */}
-
         <div className="w-full flex flex-col items-center justify-center px-4 sm:px-0">
           {/* Flashcard */}
           <div
@@ -149,23 +148,23 @@ function App() {
 
         {/* Records table */}
         <div className="mt-8 sm:mt-12 px-4 sm:px-0 w-full"></div>
-        <span className="text-sm font-extralight mb-2 px-4 sm:px-0">
+        <span className="text-xs font-bold mb-2 px-4 sm:px-0">
           Results (けっか)
         </span>
         <div
           ref={tableContainer}
-          className="border border-slate-200 rounded-sm p-2 w-full flex justify-center items-start h-[300px] sm:h-[368px] overflow-y-scroll mx-0"
+          className=" w-full flex justify-center items-start h-[300px] sm:h-[368px] overflow-y-scroll mx-0"
         >
           <table className="w-full">
             <tbody className="border border-gray-200">
-              <tr className="p-2 bg-green-100">
-                <th className="font-extralight px-2 sm:px-4 py-2 text-xs sm:text-sm">
+              <tr className="p-2 bg-slate-50">
+                <th className="font-extralight px-2 sm:px-4 py-2 text-xs">
                   Hiragana
                 </th>
-                <th className="font-extralight px-2 sm:px-4 py-2 text-xs sm:text-sm">
+                <th className="font-extralight px-2 sm:px-4 py-2 text-xs">
                   Answer
                 </th>
-                <th className="font-extralight px-2 sm:px-4 py-2 text-xs sm:text-sm">
+                <th className="font-extralight px-2 sm:px-4 py-2 text-xs">
                   Result
                 </th>
               </tr>
