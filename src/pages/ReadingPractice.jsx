@@ -131,7 +131,7 @@ function ReadingPractice() {
     const answer = filterWhiteSpaces.join(" ");
 
     const isCorrect = shuffledSentences[currentIndex].answer == answer;
-    console.log(isCorrect);
+
     if (isCorrect) {
       setResultShowModal(true);
       setIsCorrect(true);
@@ -139,6 +139,7 @@ function ReadingPractice() {
     } else {
       setResultShowModal(true);
       setIsCorrect(false);
+      setAnswers([]);
     }
   };
 
@@ -170,15 +171,15 @@ function ReadingPractice() {
     }
   }, [currentIndex, start]);
 
-  function restart() {
-    setAnswers([]);
-    // setIsTimesUp(false);
-    // setTimer(INITIAL_TIMER);
-    setReveal(false);
-    const shuffled = shuffle([...sentences]);
-    setShuffledSentences(shuffled);
-    setCurrentIndex(0);
-  }
+  // function restart() {
+  //   setAnswers([]);
+  //   // setIsTimesUp(false);
+  //   // setTimer(INITIAL_TIMER);
+  //   setReveal(false);
+  //   const shuffled = shuffle([...sentences]);
+  //   setShuffledSentences(shuffled);
+  //   setCurrentIndex(0);
+  // }
 
   function next() {
     setResultShowModal(false);
