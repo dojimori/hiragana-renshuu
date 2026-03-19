@@ -88,30 +88,38 @@ function App() {
           <div
             className={`relative border ${
               flipped ? "border-amber-500 border-2" : "border-slate-400"
-            } text-black hover:shadow-inner transition-all duration-100
-              w-full max-w-[300px] sm:w-[300px]
-              h-[240px] sm:h-[300px]
-              flex items-center justify-center rounded-sm p-2`}
+            } text-black transition-all duration-100 w-full max-w-[300px] sm:w-[300px] h-[240px] sm:h-[300px] rounded-sm p-2`}
+            style={{ perspective: "1000px" }}
           >
-            {!isFinished ? (
-              <p className="text-9xl text-center hover:scale-110 transition-all duration-150">
-                {flipped ? (
-                  shuffledFlashCards[currentFlashcardIndex]?.answer
+            <div className={`flashcard-inner ${flipped ? "flipped" : ""}`}>
+              {/* Front */}
+              <div className="flashcard-front">
+                {!isFinished ? (
+                  <p className="text-9xl text-center">
+                    <span className="font-bolder">
+                      {shuffledFlashCards[currentFlashcardIndex]?.hiragana}
+                    </span>
+                  </p>
                 ) : (
-                  <span className="font-bolder">
-                    {shuffledFlashCards[currentFlashcardIndex]?.hiragana}
+                  <span className="text-sm text-center px-4">
+                    You've finished all the flashcards! Check below for record.
                   </span>
                 )}
-              </p>
-            ) : (
-              <span className="text-sm text-center px-4">
-                You've finished all the flashcards! Check below for record.
-              </span>
-            )}
+              </div>
+
+              {/* Back */}
+              <div className="flashcard-back">
+                {!isFinished && (
+                  <p className="text-9xl text-center hover:scale-110 transition-all duration-150">
+                    {shuffledFlashCards[currentFlashcardIndex]?.answer}
+                  </p>
+                )}
+              </div>
+            </div>
 
             <button
               onClick={() => setFlipped(!flipped)}
-              className="cursor-pointer absolute px-2 rounded-tl-sm right-0 bottom-0 text-sm bg-amber-100 hover:bg-amber-200 transition-all duration-100 text-gray-900 hover:text-black"
+              className="cursor-pointer absolute px-2 rounded-tl-sm right-0 bottom-0 text-sm bg-amber-100 hover:bg-amber-200 transition-all duration-100 text-gray-900 hover:text-black z-10"
             >
               flip
             </button>
