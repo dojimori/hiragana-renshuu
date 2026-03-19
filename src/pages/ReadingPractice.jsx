@@ -135,11 +135,9 @@ function ReadingPractice() {
     if (isCorrect) {
       setResultShowModal(true);
       setIsCorrect(true);
-      setAnswers([]);
     } else {
       setResultShowModal(true);
       setIsCorrect(false);
-      setAnswers([]);
     }
   };
 
@@ -185,6 +183,13 @@ function ReadingPractice() {
     setResultShowModal(false);
     setIsCorrect(false);
     setCurrentIndex((prev) => prev + 1);
+    setAnswers([]);
+  }
+
+  function retry() {
+    setResultShowModal(false);
+    setIsCorrect(false);
+    // setCurrentIndex((prev) => prev + 1);
   }
 
   return (
@@ -220,12 +225,20 @@ function ReadingPractice() {
                 alt=""
               />
             </div>
-            <button
-              onClick={next}
-              className="cursor-pointer  bg-[#4CAF50]/80 hover:bg-[#4CAF50] text-white font-light text-sm px-2 "
-            >
-              Next
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={retry}
+                className="cursor-pointer  bg-amber-600/80 hover:bg-amber-600 text-white font-light text-sm px-2 "
+              >
+                Retry
+              </button>
+              <button
+                onClick={next}
+                className="cursor-pointer  bg-[#4CAF50]/80 hover:bg-[#4CAF50] text-white font-light text-sm px-2 "
+              >
+                Next
+              </button>
+            </div>
           </div>
           {/* {isTimesUp && (
               <>
