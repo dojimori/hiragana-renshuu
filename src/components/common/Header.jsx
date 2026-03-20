@@ -10,15 +10,14 @@ function Header() {
 
   return (
     <>
-      <div className="mb-6 w-full px-4 py-2 border-b border-gray-200 flex flex-col md:flex-row justify-between  items-center md:gap-8">
+      <div className="mb-6 w-full px-4 py-2 border-b border-gray-200 flex flex-col  md:gap-2">
         <div className="flex flex-col md:flex-row gap-2 items-center">
-          <img width="90" src="/nihongo.png" alt="" />
+          <img width="90" src="/school_girl_lying.jpg" alt="" />
           <div className="text-center md:text-start">
-            <h4 className="font-semibold">
-              ひらがな<small className="font-light">(hiragana)</small>{" "}
-              Flashcards
+            <h4 className="font-light">
+              ひらがな<small className="font-light ml-2">flashcards</small>
             </h4>
-            <p className="font-medium text-gray-600">
+            <p className="font-extralight text-gray-400">
               ひらがなのれんしゅうへようこそ!{" "}
               <small className="font-light">
                 (Welcome to hiragana practice!)
@@ -26,20 +25,20 @@ function Header() {
             </p>
           </div>
         </div>
-
-        <div className="flex gap-2 flex-col">
+        <div className="flex gap-2 flex-row">
           <small
             className={`font-light ${path == "/" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
-            <Link to="/">Flashcards</Link>
+            <Link to="/">flashcards</Link>
           </small>
           <small
             className={`font-light ${path == "/reading" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
-            <Link to="/reading">Hiragana: Read & Type</Link>
+            <Link to="/reading">hiragana: read & type</Link>
           </small>
         </div>
       </div>
+
       {/* exercises links */}
       {/* <div className="mb-6 flex gap-2 items-center">
         <Link
