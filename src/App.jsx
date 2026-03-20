@@ -87,12 +87,13 @@ function App() {
           {/* Flashcard */}
           <div
             key={currentFlashcardIndex}
-            className={`relative border ${
+            className={`relative border cursor-pointer ${
               flipped ? "border-amber-500 border-2" : "border-slate-400"
             } text-black transition-all duration-100 w-full max-w-[300px] sm:w-[300px] h-[240px] sm:h-[300px] rounded-sm p-2`}
             style={{ perspective: "1000px" }}
           >
             <div
+              onClick={() => setFlipped(!flipped)}
               className={`flashcard-inner ${flipped ? "flipped" : ""} flashcard-slide`}
             >
               {/* Front */}
@@ -119,13 +120,6 @@ function App() {
                 )}
               </div>
             </div>
-
-            <button
-              onClick={() => setFlipped(!flipped)}
-              className="cursor-pointer absolute px-2 rounded-tl-sm right-0 bottom-0 text-sm bg-amber-100 hover:bg-amber-200 transition-all duration-100 text-gray-900 hover:text-black z-10"
-            >
-              flip
-            </button>
           </div>
 
           <small className="mt-2 font-bold">
