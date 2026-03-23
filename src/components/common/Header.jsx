@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <>
-      <div className="mb-6 w-full px-4 py-2 border-b border-gray-200 flex flex-col  md:gap-2">
+      <div className="mb-2 w-full px-4 py-2 border-b border-gray-200 flex flex-col  md:gap-2">
         <div className="flex flex-col md:flex-row gap-2 items-center">
           <img width="90" src="/school_girl_lying.jpg" alt="" />
           <div className="text-center md:text-start">

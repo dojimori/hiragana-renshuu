@@ -83,6 +83,9 @@ function App() {
         {/* header */}
         <Header />
         {/* end header */}
+        <small className="text-gray-500 px-2 mb-5">
+          Note: the flashcard might not work properly on some browsers.
+        </small>
         <div className="w-full flex flex-col items-center justify-center px-4 sm:px-0">
           {/* Flashcard */}
           <div
@@ -150,12 +153,10 @@ function App() {
             </div>
           </div>
         </div>
-
         {/* Records table */}
         <div className="my-12  w-full border-t border-b px-4 py-1 border-gray-200">
           <span className="text-xs font-bold">Results (けっか)</span>
         </div>
-
         <div
           ref={tableContainer}
           className=" w-full flex justify-center items-start max-h-[300px] sm:max-h-[300px] overflow-y-scroll mx-0"
