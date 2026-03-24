@@ -104,7 +104,7 @@ function App() {
                 {!isFinished ? (
                   <p className="text-9xl text-center">
                     <span className="font-bolder">
-                      {shuffledFlashCards[currentFlashcardIndex]?.hiragana}
+                      {shuffledFlashCards[currentFlashcardIndex]?.character}
                     </span>
                   </p>
                 ) : (
@@ -118,7 +118,7 @@ function App() {
               <div className="flashcard-back">
                 {!isFinished && (
                   <p className="text-9xl text-center hover:scale-110 transition-all duration-150">
-                    {shuffledFlashCards[currentFlashcardIndex]?.answer}
+                    {shuffledFlashCards[currentFlashcardIndex]?.romaji}
                   </p>
                 )}
               </div>
