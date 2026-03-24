@@ -36,6 +36,12 @@ function Header() {
           >
             <Link to="/reading">hiragana: read & type</Link>
           </small>
+
+          <small
+            className={`font-light ${path == "/characters" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
+          >
+            <Link to="/characters">characters</Link>
+          </small>
         </div>
       </div>
 

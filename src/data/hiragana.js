@@ -1,89 +1,69 @@
 export const hiragana = [
-  { id: 1, hiragana: "あ", answer: "a" },
-  { id: 2, hiragana: "い", answer: "i" },
-  { id: 3, hiragana: "う", answer: "u" },
-  { id: 4, hiragana: "え", answer: "e" },
-  { id: 5, hiragana: "お", answer: "o" },
+  // Vowels
+  { id: 1, character: "あ", romaji: "a", sound: "a as in 'father'" },
+  { id: 2, character: "い", romaji: "i", sound: "i as in 'machine'" },
+  { id: 3, character: "う", romaji: "u", sound: "u as in 'flute'" },
+  { id: 4, character: "え", romaji: "e", sound: "e as in 'bed'" },
+  { id: 5, character: "お", romaji: "o", sound: "o as in 'more'" },
 
-  { id: 6, hiragana: "か", answer: "ka" },
-  { id: 7, hiragana: "き", answer: "ki" },
-  { id: 8, hiragana: "く", answer: "ku" },
-  { id: 9, hiragana: "け", answer: "ke" },
-  { id: 10, hiragana: "こ", answer: "ko" },
+  // K-row
+  { id: 6, character: "か", romaji: "ka", sound: "ka as in 'car'" },
+  { id: 7, character: "き", romaji: "ki", sound: "ki as in 'key'" },
+  { id: 8, character: "く", romaji: "ku", sound: "ku as in 'cool'" },
+  { id: 9, character: "け", romaji: "ke", sound: "ke as in 'kept'" },
+  { id: 10, character: "こ", romaji: "ko", sound: "ko as in 'coat'" },
 
-  { id: 11, hiragana: "さ", answer: "sa" },
-  { id: 12, hiragana: "し", answer: "shi" },
-  { id: 13, hiragana: "す", answer: "su" },
-  { id: 14, hiragana: "せ", answer: "se" },
-  { id: 15, hiragana: "そ", answer: "so" },
+  // S-row
+  { id: 11, character: "さ", romaji: "sa", sound: "sa as in 'saga'" },
+  { id: 12, character: "し", romaji: "shi", sound: "shi as in 'sheep'" },
+  { id: 13, character: "す", romaji: "su", sound: "su as in 'sue'" },
+  { id: 14, character: "せ", romaji: "se", sound: "se as in 'set'" },
+  { id: 15, character: "そ", romaji: "so", sound: "so as in 'soda'" },
 
-  { id: 16, hiragana: "た", answer: "ta" },
-  { id: 17, hiragana: "ち", answer: "chi" },
-  { id: 18, hiragana: "つ", answer: "tsu" },
-  { id: 19, hiragana: "て", answer: "te" },
-  { id: 20, hiragana: "と", answer: "to" },
+  // T-row
+  { id: 16, character: "た", romaji: "ta", sound: "ta as in 'top'" },
+  { id: 17, character: "ち", romaji: "chi", sound: "chi as in 'cheese'" },
+  { id: 18, character: "つ", romaji: "tsu", sound: "tsu as in 'tsunami'" },
+  { id: 19, character: "て", romaji: "te", sound: "te as in 'ten'" },
+  { id: 20, character: "と", romaji: "to", sound: "to as in 'tone'" },
 
-  { id: 21, hiragana: "な", answer: "na" },
-  { id: 22, hiragana: "に", answer: "ni" },
-  { id: 23, hiragana: "ぬ", answer: "nu" },
-  { id: 24, hiragana: "ね", answer: "ne" },
-  { id: 25, hiragana: "の", answer: "no" },
+  // N-row
+  { id: 21, character: "な", romaji: "na", sound: "na as in 'nap'" },
+  { id: 22, character: "に", romaji: "ni", sound: "ni as in 'knee'" },
+  { id: 23, character: "ぬ", romaji: "nu", sound: "nu as in 'new'" },
+  { id: 24, character: "ね", romaji: "ne", sound: "ne as in 'net'" },
+  { id: 25, character: "の", romaji: "no", sound: "no as in 'note'" },
 
-  { id: 26, hiragana: "は", answer: "ha" },
-  { id: 27, hiragana: "ひ", answer: "hi" },
-  { id: 28, hiragana: "ふ", answer: "fu" },
-  { id: 29, hiragana: "へ", answer: "he" },
-  { id: 30, hiragana: "ほ", answer: "ho" },
+  // H-row
+  { id: 26, character: "は", romaji: "ha", sound: "ha as in 'harp'" },
+  { id: 27, character: "ひ", romaji: "hi", sound: "hi as in 'he'" },
+  { id: 28, character: "ふ", romaji: "fu", sound: "fu as in 'fool' (softer)" },
+  { id: 29, character: "へ", romaji: "he", sound: "he as in 'help'" },
+  { id: 30, character: "ほ", romaji: "ho", sound: "ho as in 'hope'" },
 
-  { id: 31, hiragana: "ま", answer: "ma" },
-  { id: 32, hiragana: "み", answer: "mi" },
-  { id: 33, hiragana: "む", answer: "mu" },
-  { id: 34, hiragana: "め", answer: "me" },
-  { id: 35, hiragana: "も", answer: "mo" },
+  // M-row
+  { id: 31, character: "ま", romaji: "ma", sound: "ma as in 'map'" },
+  { id: 32, character: "み", romaji: "mi", sound: "mi as in 'meet'" },
+  { id: 33, character: "む", romaji: "mu", sound: "mu as in 'moon'" },
+  { id: 34, character: "め", romaji: "me", sound: "me as in 'met'" },
+  { id: 35, character: "も", romaji: "mo", sound: "mo as in 'more'" },
 
-  { id: 36, hiragana: "や", answer: "ya" },
-  { id: 37, hiragana: "ゆ", answer: "yu" },
-  { id: 38, hiragana: "よ", answer: "yo" },
+  // Y-row
+  { id: 36, character: "や", romaji: "ya", sound: "ya as in 'yard'" },
+  { id: 37, character: "ゆ", romaji: "yu", sound: "yu as in 'you'" },
+  { id: 38, character: "よ", romaji: "yo", sound: "yo as in 'yoga'" },
 
-  { id: 39, hiragana: "ら", answer: "ra" },
-  { id: 40, hiragana: "り", answer: "ri" },
-  { id: 41, hiragana: "る", answer: "ru" },
-  { id: 42, hiragana: "れ", answer: "re" },
-  { id: 43, hiragana: "ろ", answer: "ro" },
+  // R-row
+  { id: 39, character: "ら", romaji: "ra", sound: "ra (between r and l)" },
+  { id: 40, character: "り", romaji: "ri", sound: "ri (between r and l)" },
+  { id: 41, character: "る", romaji: "ru", sound: "ru (between r and l)" },
+  { id: 42, character: "れ", romaji: "re", sound: "re (between r and l)" },
+  { id: 43, character: "ろ", romaji: "ro", sound: "ro (between r and l)" },
 
-  { id: 44, hiragana: "わ", answer: "wa" },
-  { id: 45, hiragana: "を", answer: "wo" },
-  { id: 46, hiragana: "ん", answer: "n" },
+  // W-row
+  { id: 44, character: "わ", romaji: "wa", sound: "wa as in 'water'" },
+  { id: 45, character: "を", romaji: "wo", sound: "wo as in 'wow' (used as object particle)" },
 
-  // Dakuten
-  { id: 47, hiragana: "が", answer: "ga" },
-  { id: 48, hiragana: "ぎ", answer: "gi" },
-  { id: 49, hiragana: "ぐ", answer: "gu" },
-  { id: 50, hiragana: "げ", answer: "ge" },
-  { id: 51, hiragana: "ご", answer: "go" },
-
-  { id: 52, hiragana: "ざ", answer: "za" },
-  { id: 53, hiragana: "じ", answer: "ji" },
-  { id: 54, hiragana: "ず", answer: "zu" },
-  { id: 55, hiragana: "ぜ", answer: "ze" },
-  { id: 56, hiragana: "ぞ", answer: "zo" },
-
-  { id: 57, hiragana: "だ", answer: "da" },
-  { id: 58, hiragana: "ぢ", answer: "ji" },
-  { id: 59, hiragana: "づ", answer: "zu" },
-  { id: 60, hiragana: "で", answer: "de" },
-  { id: 61, hiragana: "ど", answer: "do" },
-
-  { id: 62, hiragana: "ば", answer: "ba" },
-  { id: 63, hiragana: "び", answer: "bi" },
-  { id: 64, hiragana: "ぶ", answer: "bu" },
-  { id: 65, hiragana: "べ", answer: "be" },
-  { id: 66, hiragana: "ぼ", answer: "bo" },
-
-  // Handakuten
-  { id: 67, hiragana: "ぱ", answer: "pa" },
-  { id: 68, hiragana: "ぴ", answer: "pi" },
-  { id: 69, hiragana: "ぷ", answer: "pu" },
-  { id: 70, hiragana: "ぺ", answer: "pe" },
-  { id: 71, hiragana: "ぽ", answer: "po" },
+  // N (standalone)
+  { id: 46, character: "ん", romaji: "n", sound: "n as in 'sun' (syllabic nasal)" },
 ];
