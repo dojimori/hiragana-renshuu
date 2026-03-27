@@ -45,4 +45,40 @@ export const hiragana = [
   { id: 44, character: "わ", romaji: "wa", sound: "wa as in 'water'", row: "W-row" },
   { id: 45, character: "を", romaji: "wo", sound: "wo as in 'wow' (object particle)", row: "W-row" },
   { id: 46, character: "ん", romaji: "n", sound: "n as in 'sun' (syllabic nasal)", row: "N (standalone)" },
+  // G-row (dakuten on K-row)
+  { id: 47, character: "が", romaji: "ga", sound: "ga as in 'garden'", row: "G-row" },
+  { id: 48, character: "ぎ", romaji: "gi", sound: "gi as in 'give'", row: "G-row" },
+  { id: 49, character: "ぐ", romaji: "gu", sound: "gu as in 'good'", row: "G-row" },
+  { id: 50, character: "げ", romaji: "ge", sound: "ge as in 'get'", row: "G-row" },
+  { id: 51, character: "ご", romaji: "go", sound: "go as in 'go'", row: "G-row" },
+
+  // Z-row (dakuten on S-row)
+  { id: 52, character: "ざ", romaji: "za", sound: "za as in 'zap'", row: "Z-row" },
+  { id: 53, character: "じ", romaji: "ji", sound: "ji as in 'jeep'", row: "Z-row" },
+  { id: 54, character: "ず", romaji: "zu", sound: "zu as in 'zoo'", row: "Z-row" },
+  { id: 55, character: "ぜ", romaji: "ze", sound: "ze as in 'zest'", row: "Z-row" },
+  { id: 56, character: "ぞ", romaji: "zo", sound: "zo as in 'zone'", row: "Z-row" },
+
+  // D-row (dakuten on T-row)
+  { id: 57, character: "だ", romaji: "da", sound: "da as in 'dark'", row: "D-row" },
+  { id: 58, character: "ぢ", romaji: "di", sound: "di as in 'jeep' (archaic)", row: "D-row" },
+  { id: 59, character: "づ", romaji: "du", sound: "du as in 'zoo' (archaic)", row: "D-row" },
+  { id: 60, character: "で", romaji: "de", sound: "de as in 'den'", row: "D-row" },
+  { id: 61, character: "ど", romaji: "do", sound: "do as in 'dog'", row: "D-row" },
+
+  // B-row (dakuten on H-row)
+  { id: 62, character: "ば", romaji: "ba", sound: "ba as in 'bar'", row: "B-row" },
+  { id: 63, character: "び", romaji: "bi", sound: "bi as in 'bit'", row: "B-row" },
+  { id: 64, character: "ぶ", romaji: "bu", sound: "bu as in 'boo'", row: "B-row" },
+  { id: 65, character: "べ", romaji: "be", sound: "be as in 'bed'", row: "B-row" },
+  { id: 66, character: "ぼ", romaji: "bo", sound: "bo as in 'boat'", row: "B-row" },
+
+  // P-row (handakuten on H-row)
+  { id: 67, character: "ぱ", romaji: "pa", sound: "pa as in 'park'", row: "P-row" },
+  { id: 68, character: "ぴ", romaji: "pi", sound: "pi as in 'peak'", row: "P-row" },
+  { id: 69, character: "ぷ", romaji: "pu", sound: "pu as in 'pool'", row: "P-row" },
+  { id: 70, character: "ぺ", romaji: "pe", sound: "pe as in 'pet'", row: "P-row" },
+  { id: 71, character: "ぽ", romaji: "po", sound: "po as in 'pot'", row: "P-row" },
+
 ];
+

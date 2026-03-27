@@ -25,7 +25,7 @@ export default function CharactersList() {
     return `https://kanjivg.tagaini.net/kanjivg/kanji/${codePoint}.svg`;
   };
 
-  const rows = Array.from(new Set(hiragana.map((h) => h.row)));
+  // const rows = Array.from(new Set(hiragana.map((h) => h.row)));
 
   return (
     <>
@@ -42,25 +42,24 @@ export default function CharactersList() {
           }}
         >
           {hiragana.map(({ character, id, row, romaji }) => {
-            const colors = rowColors[row];
-            console.log(colors);
+            const colors = rowColors[row] ? rowColors[row] : null;
             return (
               <div
                 key={id}
                 onClick={() => setSelected({ character, id, row, romaji })}
                 style={{
-                  backgroundColor: colors.bg,
-                  color: colors.label,
+                  backgroundColor: colors?.bg ?? "f5f5f5",
                   borderRadius: "2px",
                   padding: "1rem 0.75rem",
                   textAlign: "center",
-                  border: `1.5px solid ${colors.accent}22`,
+                  color: colors?.label ?? "#333",
+                  border: `1.5px solid ${colors?.accent ?? "#ccc"}22`,
                 }}
               >
                 <h4 className="text-2xl font-medium">{character} </h4>
                 <small
                   className="text-xs"
-                  style={{ color: `${colors.accent}80` }}
+                  style={{ color: `${colors?.accent ?? "#ccc"}80` }}
                 >
                   {romaji}
                 </small>
@@ -116,6 +115,9 @@ export default function CharactersList() {
             </div>
           </div>
         )}
+        <div className="p-4">
+          <small>Dakuten</small>
+        </div>
       </Page>
     </>
   );
