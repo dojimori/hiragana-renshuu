@@ -34,10 +34,11 @@ export default function CharactersList() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, 150px)",
             gap: "0.85rem",
-            maxWidth: "860px",
+            width: "860px",
             margin: "0 auto",
+            placeContent: "center",
           }}
         >
           {hiragana.map(({ character, id, row, romaji }) => {
@@ -81,7 +82,7 @@ export default function CharactersList() {
               {/* Close button */}
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-3 right-4 text-gray-300 hover:text-gray-500 text-xl leading-none"
+                className="cursor-pointer absolute top-3 right-4 text-gray-300 hover:text-gray-500 text-xl leading-none"
               >
                 ✕
               </button>
