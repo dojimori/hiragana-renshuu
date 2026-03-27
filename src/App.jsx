@@ -174,13 +174,13 @@ function App() {
                   Result
                 </th>
               </tr>
-              {pastCharacters.map(({ hiragana, answer, isKnown }, index) => (
+              {pastCharacters.map(({ character, romaji, isKnown }, index) => (
                 <tr key={index}>
                   <td className="border border-gray-300 text-center font-bold text-sm sm:text-base py-1">
-                    {hiragana}
+                    {character}
                   </td>
                   <td className="border border-gray-300 text-center text-sm sm:text-base py-1">
-                    {answer}
+                    {romaji}
                   </td>
                   <td className="border border-gray-300 text-center py-1">
                     <span className="font-extralight text-xs sm:text-sm">
