@@ -6,6 +6,6 @@
 
 </div>
 
-Overview 
+🇯🇵 Overview 
 ---
 ひらがなれんしゅう (Hiragana Renshuu) is an interactive web application designed to help beginners learn and master Japanese Hiragana through active practice. 
