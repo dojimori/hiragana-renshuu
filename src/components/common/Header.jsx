@@ -27,24 +27,24 @@ function Header() {
         </div>
         <div className="flex gap-2 flex-row bg-blue-300/20 px-6 py-1.5 border-y border-gray-200">
           <small
-            className={`font-bold ${path == "/" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
+            className={`font-extralight  ${path == "/" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
             <Link to="/">flashcards</Link>
           </small>
           <small
-            className={`font-bold ${path == "/read-type" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
+            className={`font-extralightd ${path == "/read-type" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
             <Link to="/read-type">hiragana: read & type</Link>
           </small>
 
           <small
-            className={`font-bold ${path == "/characters" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
+            className={`font-extralight ${path == "/characters" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
             <Link to="/characters">characters</Link>
           </small>
 
           <small
-            className={`font-bold ${path == "/reading" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
+            className={`font-extralight ${path == "/reading" ? "text-blue-600 underline" : "text-blue-400"} cursor-pointer hover:underline `}
           >
             <Link to="/reading">reading</Link>
           </small>
